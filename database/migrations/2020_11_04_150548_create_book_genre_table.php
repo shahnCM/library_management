@@ -16,10 +16,10 @@ class CreateBookGenreTable extends Migration
         Schema::create('book_genre', function (Blueprint $table) {
             $table->id();
 
-            $table->bigInteger('book_id');
+            // $table->bigInteger('book_id');
             $table->foreignId('book_id')->constrained('books');
             
-            $table->bigInteger('genre_id');
+            // $table->bigInteger('genre_id');
             $table->foreignId('genre_id')->constrained('genres');
             
             $table->timestamps();

@@ -16,23 +16,22 @@ class CreateBookUserTable extends Migration
         Schema::create('book_user', function (Blueprint $table) {
             $table->id();
 
-            $table->bigInteger('user_id');
+            // $table->bigInteger('user_id');
             $table->foreignId('user_id')->constrained('users');
             
-            $table->bigInteger('book_copy_id');
+            // $table->bigInteger('book_copy_id');
             $table->foreignId('book_copy_id')->constrained('book_copies');
             
-            $table->bigInteger('loan_request_id');
+            // $table->bigInteger('loan_request_id');
             $table->foreignId('loan_request_id')->constrained('loan_requests');
             
-            $table->bigInteger('return_request_id');
+            // $table->bigInteger('return_request_id');
             $table->foreignId('return_request_id')->constrained('return_requests');
-            
+            $table->timestamp('loan_expire_at', 0);
+            $table->timestamp('lend_at', 0);
             $table->string('status');
-            $table->timestamps('loan_expire_at');
-            $table->timestamps('lend_at');
             $table->timestamps();
-            $table->timestamps('deleted_at');
+            $table->softDeletes();
         });
     }
 

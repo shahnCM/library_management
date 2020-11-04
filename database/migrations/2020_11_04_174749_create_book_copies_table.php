@@ -17,7 +17,7 @@ class CreateBookCopiesTable extends Migration
             $table->id();
             $table->string('uuid');
 
-            $table->bigInteger('book_id');
+            // $table->bigInteger('book_id');
             $table->foreignId('book_id')->constrained('books');
             
             $table->string('edition');
@@ -25,12 +25,12 @@ class CreateBookCopiesTable extends Migration
             $table->string('description');
             $table->boolean('is_available');
 
-            $table->bigInteger('added_by');
+            // $table->bigInteger('added_by');
             $table->foreignId('added_by')->constrained('users');
             
-            $table->timestamps('published_date');
+            $table->timestamp('published_date', 0);
             $table->timestamps();
-            $table->timestamps('deleted_at');
+            $table->softDeletes();
         });
     }
 

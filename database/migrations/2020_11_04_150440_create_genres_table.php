@@ -18,7 +18,7 @@ class CreateGenresTable extends Migration
             $table->string('name');
             $table->string('slug');
             $table->timestamps();
-            $table->timestamps('deleted_at');
+            $table->softDeletes();
         });
     }
 

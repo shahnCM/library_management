@@ -16,10 +16,10 @@ class CreateAuthorBookTable extends Migration
         Schema::create('author_book', function (Blueprint $table) {
             $table->id();
 
-            $table->bigInteger('author_id');
+            // $table->bigInteger('author_id');
             $table->foreignId('author_id')->constrained('authors');
             
-            $table->bigInteger('book_id');
+            // $table->bigInteger('book_id');
             $table->foreignId('book_id')->constrained('books');
             
             $table->string('role');

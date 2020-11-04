@@ -19,14 +19,14 @@ class CreateBooksTable extends Migration
             $table->string('slug');
             $table->string('image');
 
-            $table->bigInteger('publication_id');
+            // $table->bigInteger('publication_id');
             $table->foreignId('publication_id')->constrained('publications');
             
             $table->bigInteger('isbn_number');
             $table->bigInteger('total_copies');
             $table->bigInteger('available_copies');
             $table->timestamps();
-            $table->timestamps('deleted_at');
+            $table->softDeletes();
         });
     }
 
