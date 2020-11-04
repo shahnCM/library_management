@@ -27,8 +27,8 @@ class CreateBookUserTable extends Migration
             
             // $table->bigInteger('return_request_id');
             $table->foreignId('return_request_id')->constrained('return_requests');
-            $table->timestamp('lend_at', 0);
-            // $table->timestamp('loan_expire_at', 0);
+            $table->timestamp('lend_at', 0)->nullable();
+            $table->timestamp('loan_expire_at', 0)->nullable();
             $table->string('status');
             $table->timestamps();
             $table->softDeletes();
