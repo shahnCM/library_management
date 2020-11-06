@@ -1,4 +1,4 @@
-/app/bootstrap/cache
+/bootstrap/cache
 /config/cache
 /node_modules
 /public/hot
