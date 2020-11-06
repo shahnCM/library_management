@@ -16,17 +16,11 @@ class CreateBookUserTable extends Migration
         Schema::create('book_user', function (Blueprint $table) {
             $table->id();
         
-            // $table->bigInteger('user_id');
-            $table->foreignId('user_id')->constrained('users');
-            
-            // $table->bigInteger('book_copy_id');
+            $table->foreignId('user_id')->constrained('users');    
             $table->foreignId('book_copy_id')->constrained('book_copies');
-            
-            // $table->bigInteger('loan_request_id');
             $table->foreignId('loan_request_id')->constrained('loan_requests');
-            
-            // $table->bigInteger('return_request_id');
             $table->foreignId('return_request_id')->constrained('return_requests');
+        
             $table->timestamp('lend_at', 0)->nullable();
             $table->timestamp('loan_expire_at', 0)->nullable();
             $table->string('status');
@@ -42,6 +36,13 @@ class CreateBookUserTable extends Migration
      */
     public function down()
     {
+        Schema::table('book_user', function (Blueprint $table) {
+            $table->dropForeign(['user_id']);
+            $table->dropForeign(['book_copy_id']);
+            $table->dropForeign(['loan_request_id']);
+            $table->dropForeign(['return_request_id']);
+        });
+        
         Schema::dropIfExists('book_user');
     }
 }

@@ -16,10 +16,7 @@ class CreateReturnRequestsTable extends Migration
         Schema::create('return_requests', function (Blueprint $table) {
             $table->id();
 
-            // $table->bigInteger('user_id');
             $table->foreignId('user_id')->constrained('users');
-            
-            // $table->bigInteger('status_changed_by');
             $table->foreignId('status_changed_by')->constrained('users');
             
             $table->string('status');
@@ -37,6 +34,10 @@ class CreateReturnRequestsTable extends Migration
      */
     public function down()
     {
+        Schema::table('return_requests', function (Blueprint $table) {
+            $table->dropForeign(['user_id']);
+            $table->dropForeign(['status_changed_by']);
+        });
         Schema::dropIfExists('return_requests');
     }
 }

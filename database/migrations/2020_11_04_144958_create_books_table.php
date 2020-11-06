@@ -16,15 +16,14 @@ class CreateBooksTable extends Migration
         Schema::create('books', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('slug');
-            $table->string('image');
+            $table->string('slug')->unique();
+            $table->string('image')->nullable();
 
-            // $table->bigInteger('publication_id');
             $table->foreignId('publication_id')->constrained('publications');
             
-            $table->bigInteger('isbn_number');
-            $table->bigInteger('total_copies');
-            $table->bigInteger('available_copies');
+            $table->bigInteger('isbn_number')->default(0);
+            $table->bigInteger('total_copies')->default(0);
+            $table->bigInteger('available_copies')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });
@@ -37,6 +36,9 @@ class CreateBooksTable extends Migration
      */
     public function down()
     {
+        Schema::table('books', function (Blueprint $table) {
+            $table->dropForeign(['publication_id']);
+        });
         Schema::dropIfExists('books');
     }
 }

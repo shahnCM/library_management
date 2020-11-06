@@ -16,10 +16,7 @@ class CreateBookGenreTable extends Migration
         Schema::create('book_genre', function (Blueprint $table) {
             $table->id();
 
-            // $table->bigInteger('book_id');
             $table->foreignId('book_id')->constrained('books');
-            
-            // $table->bigInteger('genre_id');
             $table->foreignId('genre_id')->constrained('genres');
             
             $table->timestamps();
@@ -33,6 +30,10 @@ class CreateBookGenreTable extends Migration
      */
     public function down()
     {
+        Schema::table('book_genre', function (Blueprint $table) {
+            $table->dropForeign(['book_id']);
+            $table->dropForeign(['genre_id']);
+        });
         Schema::dropIfExists('book_genre');
     }
 }

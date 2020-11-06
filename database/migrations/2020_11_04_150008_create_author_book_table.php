@@ -16,10 +16,7 @@ class CreateAuthorBookTable extends Migration
         Schema::create('author_book', function (Blueprint $table) {
             $table->id();
 
-            // $table->bigInteger('author_id');
             $table->foreignId('author_id')->constrained('authors');
-            
-            // $table->bigInteger('book_id');
             $table->foreignId('book_id')->constrained('books');
             
             $table->string('role');
@@ -34,6 +31,10 @@ class CreateAuthorBookTable extends Migration
      */
     public function down()
     {
+        Schema::table('author_book', function (Blueprint $table) {
+            $table->dropForeign(['author_id']);
+            $table->dropForeign(['book_id']);
+        });
         Schema::dropIfExists('author_book');
     }
 }
