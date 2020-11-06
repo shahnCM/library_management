@@ -19,8 +19,8 @@ class CreateReturnRequestsTable extends Migration
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('status_changed_by')->constrained('users');
             
-            $table->string('status');
-            $table->string('reason');
+            $table->string('status')->default('pending');
+            $table->string('reason')->nullable();
             $table->timestamp('status_change_date', 0);
             $table->timestamps();
             $table->softDeletes();

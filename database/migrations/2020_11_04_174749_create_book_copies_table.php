@@ -20,10 +20,10 @@ class CreateBookCopiesTable extends Migration
             $table->foreignId('added_by')->constrained('users');
             $table->foreignId('book_id')->constrained('books');
             
-            $table->string('edition');
-            $table->string('condition');
-            $table->string('description');
-            $table->boolean('is_available');
+            $table->string('edition')->nullable();
+            $table->string('condition')->nullable();
+            $table->string('description')->nullable();
+            $table->boolean('is_available')->default(0);
             
             $table->timestamp('published_date', 0);
             $table->timestamps();
