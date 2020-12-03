@@ -19,7 +19,7 @@ class CreateLoanRequestsTable extends Migration
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('status_changed_by')->constrained('users');
             
-            $table->string('status')->default('pending');
+            $table->string('status')->default(LoanRequest::DEFAULT_STATUS);
             $table->string('reason')->nullable();
             $table->timestamp('status_change_date', 0);
             $table->timestamps();
