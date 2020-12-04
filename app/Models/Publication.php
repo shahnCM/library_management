@@ -9,6 +9,7 @@ class Publication extends Model
 {
     use HasFactory;
 
+    protected $table = 'publications';
     protected $guarded = [];
 
     public function book()

@@ -10,6 +10,7 @@ class BookCopy extends Model
 {
     use HasFactory;
 
+    protected $table = 'book_copy';
     protected $guarded = [];
 
     public function book()
@@ -21,4 +22,10 @@ class BookCopy extends Model
     {
         return $this->belongsTo('App\Models\User', 'added_by');
     }
+
+    public function loanedBy()
+    {
+        return $this->belongsToMany('App\Models\User')->using('App\Models\BookUser', 'user_id');
+    }
+
 }

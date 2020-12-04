@@ -5,7 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class AuthorBook extends Model
+class AuthorBook extends Pivot
 {
     use HasFactory;
+
+    protected $table = 'author_book';
+    protected $guarded = [];
 }

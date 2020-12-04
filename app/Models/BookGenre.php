@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 // use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class BookGenre extends Model
+class BookGenre extends Pivot
 {
     use HasFactory;
+    protected $table = 'book_genre';
+    protected $guarded = [];
 }

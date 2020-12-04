@@ -24,9 +24,12 @@ class User extends Authenticatable
      *
      * @var array
      */
+    
+    protected $table = 'users';
     protected $fillable = [
         'name',
         'email',
+        'phone',
         'password',
     ];
 
@@ -81,13 +84,18 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\returnRequest', 'user_id');
     }
 
-    public function approved_returnRequests()
+    public function responded_returnRequests()
     {
         return $this->isLibrarian() ? $this->hasMany('App\Models\ReturnRequest', 'status_changed_by') : null;
     }    
 
-    public function approved_loanRequests()
+    public function responded_loanRequests()
     {
         return $this->isLibrarian() ? $this->hasMany('App\Models\LoanRequest', 'status_changed_by') : null;
-    }    
+    }   
+    
+    public function loanedBooks() // Actually Loaned copies of a Book
+    {
+        return $this->belongsToMany('App\Models\BookCopy')->using('App\Models\BookUser', 'book_copy_id');
+    }
 }

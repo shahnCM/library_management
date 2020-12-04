@@ -9,6 +9,7 @@ class Book extends Model
 {
     use HasFactory;
 
+    protected $table = 'books';
     protected $guarded = [];
 
     public function publication()
@@ -30,6 +31,8 @@ class Book extends Model
     {
         return $this->hasMany('App\Models\BookCopy', 'book_id');
     }
+
+    
 
 
 }

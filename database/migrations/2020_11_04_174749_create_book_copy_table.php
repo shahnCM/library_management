@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBookCopiesTable extends Migration
+class CreateBookCopyTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateBookCopiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('book_copies', function (Blueprint $table) {
+        Schema::create('book_copy', function (Blueprint $table) {
             $table->id();
             $table->string('uuid')->unique();
 
@@ -38,11 +38,11 @@ class CreateBookCopiesTable extends Migration
      */
     public function down()
     {
-        Schema::table('book_copies', function (Blueprint $table) {
+        Schema::table('book_copy', function (Blueprint $table) {
             $table->dropForeign(['book_id']);
             $table->dropForeign(['added_by']);
         });
         
-        Schema::dropIfExists('book_copies');
+        Schema::dropIfExists('book_copy');
     }
 }
