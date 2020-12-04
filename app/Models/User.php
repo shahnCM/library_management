@@ -94,7 +94,7 @@ class User extends Authenticatable
         return $this->isLibrarian() ? $this->hasMany('App\Models\LoanRequest', 'status_changed_by') : null;
     }   
     
-    public function loanedBooks() // Actually Loaned copies of a Book
+    public function lendBooks() // Actually Lend copies of a Book
     {
         return $this->belongsToMany('App\Models\BookCopy')->using('App\Models\BookUser', 'book_copy_id');
     }

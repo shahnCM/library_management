@@ -23,7 +23,7 @@ class BookCopy extends Model
         return $this->belongsTo('App\Models\User', 'added_by');
     }
 
-    public function loanedBy()
+    public function lendBy()
     {
         return $this->belongsToMany('App\Models\User')->using('App\Models\BookUser', 'user_id');
     }
