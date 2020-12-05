@@ -15,11 +15,11 @@ class BookUser extends Pivot
 
     public function loanRequest()
     {
-        return $this->hasOne('App\Models\LoanRequest', 'loan_request_id');
+        return $this->belongsTo('App\Models\LoanRequest', 'loan_request_id');
     }
 
     public function returnRequest()
     {
-        return $this->hasOne('App\Models\returnRequest', 'return_request_id');
+        return $this->belongsTo('App\Models\returnRequest', 'return_request_id');
     }
 }
