@@ -75,21 +75,26 @@ class User extends Authenticatable
 
     public function returnRequests()
     {
-        return $this->hasMany('App\Models\returnRequest', 'user_id');
+        return $this->hasMany('App\Models\ReturnRequest', 'user_id');
     }
 
     public function responded_returnRequests()
     {
-        return $this->isLibrarian() ? $this->hasMany('App\Models\ReturnRequest', 'status_changed_by') : null;
+        return $this->hasMany('App\Models\ReturnRequest', 'status_changed_by');
     }    
 
     public function responded_loanRequests()
     {
-        return $this->isLibrarian() ? $this->hasMany('App\Models\LoanRequest', 'status_changed_by') : null;
+        return $this->hasMany('App\Models\LoanRequest', 'status_changed_by');
     }   
     
     public function lendBooks() // Actually Lend copies of a Book
     {
-        return $this->hasMany('App\Models\BookUser', 'user_id');                
+        return $this->hasMany('App\Models\BookUser');                
+    }
+
+    public function Books() // Actually Lend copies of a Book
+    {
+        return $this->hasMany('App\Models\UserBook');                
     }
 }

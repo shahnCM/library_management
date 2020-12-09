@@ -18,7 +18,7 @@ class CreateReturnRequestsTable extends Migration
             $table->id();
 
             $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('status_changed_by')->constrained('users');
+            $table->foreignId('status_changed_by')->nullable()->constrained('users');
             
             $table->string('status')->default(ReturnRequest::STATUS_DEFAULT);
             $table->string('reason')->nullable();

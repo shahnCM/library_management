@@ -24,6 +24,6 @@ class LoanRequest extends Model
 
     public function respondedBy()
     {
-        return (App\Models\User::isLibrarian()) ? $this->belongsTo('App\Models\User', 'status_changed_by') : null;
+        return $this->belongsTo('App\Models\User', 'status_changed_by');
     }    
 }

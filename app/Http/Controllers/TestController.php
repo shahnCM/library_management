@@ -20,10 +20,17 @@ class TestController extends Controller
      */
     public function index()
     {
-        $user = User::find(1);
-        $lendBooks = BookUser::with(['bookCopy', 'returnRequest', 'loanRequest'])->where('user_id', 1);
+        $user = User::find(2);
+        $lendBooks = BookUser::with([
+            'bookCopy.book',
+            'bookCopy.addedBy',
+            'returnRequest.byUser',
+            'returnRequest.respondedBy', 
+            'loanRequest.byUser',
+            'loanRequest.respondedBy',
+            ])->where('user_id', 2)->get();
 
-        dd($lendBooks);
+        dd($lendBooks[0]);
     }
 
     /**
