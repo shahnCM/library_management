@@ -14,7 +14,7 @@ class ReturnRequest extends Model
 
     const STATUS_PENDING = 'pending';
     const STATUS_APPROVED = 'approved';
-    const DEFAULT_STATUS = self::STATUS_PENDING;
+    const STATUS_DEFAULT = self::STATUS_PENDING;
 
     public function byUser()
     {

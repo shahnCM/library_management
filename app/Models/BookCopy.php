@@ -10,7 +10,7 @@ class BookCopy extends Model
 {
     use HasFactory;
 
-    protected $table = 'book_copy';
+    protected $table = 'book_copies';
     protected $guarded = [];
 
     public function book()

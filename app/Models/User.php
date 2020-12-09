@@ -11,9 +11,8 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-    const LIBRARIAN_ROLE = 'librarian';
-    const GENERAL_USER_ROLE = 'general_user';
-    const DEFAULT_ROLE = self::GENERAL_USER_ROLE;
+    const ROLE_LIBRARIAN = 'librarian';
+    const ROLE_GENERAL_USER = 'general_user';
 
     const BANNED_FLAG_UP = 1;
     const BANNED_FLAG_DOWN = 0;
@@ -54,24 +53,19 @@ class User extends Authenticatable
 
     public function isLibrarian()
     {
-        return $this->role === self::LIBRARIAN_ROLE;
+        return $this->role === self::ROLE_LIBRARIAN;
     }
 
     public function Role()
     {
-        if($this->role === self::LIBRARIAN_ROLE)
+        if($this->role === self::ROLE_LIBRARIAN)
         {
-            return "Librarian";
+            return self::ROLE_LIBRARIAN;
         }
-        elseif($this->role === self::GENERAL_USER_ROLE)
+        elseif($this->role === self::ROLE_GENERAL_USER)
         {
-            return "General User";
+            return self::ROLE_GENERAL_USER;
         }
-    }
-    
-    public function isBanned()
-    {
-        return $this->is_banned === self::BANNED_FLAG_UP;
     }
     
     public function loanRequests()

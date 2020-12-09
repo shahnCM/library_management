@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Models\ReturnRequest;
 
 class CreateReturnRequestsTable extends Migration
 {
@@ -19,7 +20,7 @@ class CreateReturnRequestsTable extends Migration
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('status_changed_by')->constrained('users');
             
-            $table->string('status')->default(ReturnRequest::DEFAULT_STATUS);
+            $table->string('status')->default(ReturnRequest::STATUS_DEFAULT);
             $table->string('reason')->nullable();
             $table->timestamp('status_change_date', 0);
             $table->timestamps();
