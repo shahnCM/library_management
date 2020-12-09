@@ -6,29 +6,27 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Fortify\TwoFactorAuthenticatable;
+use Laravel\Jetstream\HasProfilePhoto;
+use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
-
-    const ROLE_LIBRARIAN = 'librarian';
-    const ROLE_GENERAL_USER = 'general_user';
-
-    const BANNED_FLAG_UP = 1;
-    const BANNED_FLAG_DOWN = 0;
-    
+    use HasApiTokens;
+    use HasFactory;
+    use HasProfilePhoto;
+    use Notifiable;
+    use TwoFactorAuthenticatable;
+    use SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    
-    protected $table = 'users';
     protected $fillable = [
         'name',
         'email',
-        'phone',
         'password',
     ];
 
@@ -40,6 +38,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'two_factor_recovery_codes',
+        'two_factor_secret',
     ];
 
     /**
@@ -51,50 +51,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function isLibrarian()
-    {
-        return $this->role === self::ROLE_LIBRARIAN;
-    }
-
-    public function Role()
-    {
-        if($this->role === self::ROLE_LIBRARIAN)
-        {
-            return self::ROLE_LIBRARIAN;
-        }
-        elseif($this->role === self::ROLE_GENERAL_USER)
-        {
-            return self::ROLE_GENERAL_USER;
-        }
-    }
-    
-    public function loanRequests()
-    {
-        return $this->hasMany('App\Models\LoanRequest', 'user_id');
-    }
-
-    public function returnRequests()
-    {
-        return $this->hasMany('App\Models\ReturnRequest', 'user_id');
-    }
-
-    public function responded_returnRequests()
-    {
-        return $this->hasMany('App\Models\ReturnRequest', 'status_changed_by');
-    }    
-
-    public function responded_loanRequests()
-    {
-        return $this->hasMany('App\Models\LoanRequest', 'status_changed_by');
-    }   
-    
-    public function lendBooks() // Actually Lend copies of a Book
-    {
-        return $this->hasMany('App\Models\BookUser');                
-    }
-
-    public function Books() // Actually Lend copies of a Book
-    {
-        return $this->hasMany('App\Models\UserBook');                
-    }
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = [
+        'profile_photo_url',
+    ];
 }

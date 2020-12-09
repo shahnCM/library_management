@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class LoanRequest extends Model
 {
     use HasFactory;
+    use SoftDeletes;
 
     protected $table = 'loan_requests';
     protected $guarded = [];
