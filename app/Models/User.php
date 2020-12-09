@@ -90,6 +90,6 @@ class User extends Authenticatable
     
     public function lendBooks() // Actually Lend copies of a Book
     {
-        return $this->belongsToMany('App\Models\BookCopy')->using('App\Models\BookUser', 'book_copy_id');
+        return $this->hasMany('App\Models\BookUser', 'user_id');                
     }
 }

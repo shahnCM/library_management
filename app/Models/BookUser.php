@@ -3,15 +3,20 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-// use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\Pivot;
+use Illuminate\Database\Eloquent\Model;
+// use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class BookUser extends Pivot
+class BookUser extends Model
 {
     use HasFactory;
 
     protected $table = 'book_user';
     protected $guarded = [];
+
+    public function bookCopy()
+    {
+        return $this->belongsTo('App\Models\BookCopy', 'book_copy_id');
+    }
 
     public function loanRequest()
     {

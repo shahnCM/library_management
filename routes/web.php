@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\TestController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,5 +26,7 @@ Route::get('/create/admin/' . base64_decode(env("ADMIN_CREATE_HASH")), function 
 Route::get('/create/admin', function () {
     dd(base64_decode(env("ADMIN_CREATE_HASH")));
 });
+
+Route::resource('tests', TestController::class);
 
 //Q1JFQVRF
