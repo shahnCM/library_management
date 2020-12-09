@@ -19,7 +19,7 @@ class CreateBookUserTable extends Migration
             $table->foreignId('user_id')->constrained('users');    
             $table->foreignId('book_copy_id')->constrained('book_copies');
             $table->foreignId('loan_request_id')->constrained('loan_requests');
-            $table->foreignId('return_request_id')->constrained('return_requests');
+            $table->foreignId('return_request_id')->nullable()->constrained('return_requests');
         
             $table->timestamp('lend_at', 0)->nullable();
             $table->timestamp('loan_expire_at', 0)->nullable();
