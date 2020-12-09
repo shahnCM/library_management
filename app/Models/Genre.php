@@ -9,7 +9,7 @@ class Genre extends Model
 {
     use HasFactory;
 
-    protected $table = 'genre';
+    protected $table = 'genres';
     protected $guarded = [];
 
     public function books()

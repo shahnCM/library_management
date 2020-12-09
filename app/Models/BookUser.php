@@ -25,6 +25,6 @@ class BookUser extends Model
 
     public function returnRequest()
     {
-        return $this->belongsTo('App\Models\returnRequest', 'return_request_id');
-    }
+        return $this->belongsTo('App\Models\ReturnRequest', 'return_request_id');
+}
 }
