@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Book extends Model
 {
     use HasFactory;
-
+    use SoftDeletes;
+    
     protected $table = 'books';
     protected $guarded = [];
 

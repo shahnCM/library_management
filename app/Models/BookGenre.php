@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
 class BookGenre extends Pivot
 {
     use HasFactory;
+    use SoftDeletes;
+
     protected $table = 'book_genre';
     protected $guarded = [];
 }

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ReturnRequest extends Model
 {
     use HasFactory;
+    use SoftDeletes;
 
     protected $table = 'return_requests';
     protected $guarded = [];

@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class BookCopy extends Model
 {
     use HasFactory;
+    use SoftDeletes;
 
     protected $table = 'book_copies';
     protected $guarded = [];
