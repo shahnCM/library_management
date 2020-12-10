@@ -12,6 +12,14 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+        <style>
+            .isDisabled {
+                color: currentColor;
+                cursor: not-allowed;
+                opacity: 0.5;
+                text-decoration: none;
+            }            
+        </style>
 
         <!-- Scripts -->
         @routes
