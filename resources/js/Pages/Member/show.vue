@@ -68,10 +68,9 @@
                         {{member.email}}
                       </dd>
                     </div>
-
-
                   </dl>
                 </div>
+                
               </div>            
             </div>
           </div>

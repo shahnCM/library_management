@@ -41,7 +41,16 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->input());
+        sleep(5);
+        
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required',
+            'password' => 'required|min:8',
+        ]);
+
+        // dd($request->input());
     }
 
     /**

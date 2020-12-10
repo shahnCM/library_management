@@ -3506,6 +3506,18 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
+/* harmony import */ var _Jetstream_InputError__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Jetstream/InputError */ "./resources/js/Jetstream/InputError.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3571,9 +3583,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__["default"]
+    AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__["default"],
+    JetInputError: _Jetstream_InputError__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  props: {
+    errors: Object
   },
   mounted: function mounted() {// console.log(this.member);
   },
@@ -3594,6 +3611,7 @@ __webpack_require__.r(__webpack_exports__);
       data.append('email', this.form.email);
       data.append('phone', this.form.phone);
       data.append('password', this.form.password);
+      console.log(this.form.__options);
       this.$inertia.post(this.$route('member.store'), data);
     }
   }
@@ -3751,7 +3769,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
-//
 //
 //
 //
@@ -48848,7 +48865,25 @@ var render = function() {
             "div",
             { staticClass: "bg-white overflow-hidden shadow-xl rounded-lg" },
             [
-              _c("div", { staticClass: "bg-white  pt-2 " }, [
+              _c("div", { staticClass: "bg-white" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "header bg-blue-200 p-5 grid justify-items-stretch"
+                  },
+                  [
+                    _c(
+                      "h3",
+                      {
+                        staticClass:
+                          "text-gray-500 text-xl mx-auto justify-self-center"
+                      },
+                      [_vm._v("Enter all the information below ")]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
                 _c("div", { staticClass: "container mx-auto" }, [
                   _c(
                     "div",
@@ -48867,252 +48902,252 @@ var render = function() {
                         },
                         [
                           _c("div", { staticClass: "flex flex-wrap -mx-3" }, [
-                            _c(
-                              "h3",
-                              {
-                                staticClass:
-                                  "text-gray-500 text-xl mx-auto pb-4"
-                              },
-                              [_vm._v("Enter all the information below ")]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "personal border-t w-full pt-4" },
-                              [
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass:
-                                      "flex items-center justify-between mt-4"
-                                  },
-                                  [
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass:
-                                          "w-full md:w-1/2 px-3 mb-6 bg-gray-100 rounded-lg pt-2 p-3 m-1"
-                                      },
-                                      [
-                                        _c(
-                                          "label",
-                                          {
-                                            staticClass:
-                                              "block uppercase tracking-wide text-gray-500 text-xs font-bold mb-2 "
-                                          },
-                                          [_vm._v("Full name")]
-                                        ),
-                                        _vm._v(" "),
-                                        _c("input", {
-                                          directives: [
-                                            {
-                                              name: "model",
-                                              rawName: "v-model",
-                                              value: _vm.form.name,
-                                              expression: "form.name"
-                                            }
-                                          ],
+                            _c("div", { staticClass: "persona w-full pt-4" }, [
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "flex items-center justify-between mt-4"
+                                },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "w-full md:w-1/2 px-3 mb-6 hover:bg-blue-200 bg-gray-100 rounded-lg pt-2 p-3 m-1"
+                                    },
+                                    [
+                                      _c(
+                                        "label",
+                                        {
                                           staticClass:
-                                            " appearance-none block w-full bg-white text-gray-500 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500",
-                                          attrs: {
-                                            type: "text",
-                                            required: "",
-                                            name: "name"
-                                          },
-                                          domProps: { value: _vm.form.name },
-                                          on: {
-                                            input: function($event) {
-                                              if ($event.target.composing) {
-                                                return
-                                              }
-                                              _vm.$set(
-                                                _vm.form,
-                                                "name",
-                                                $event.target.value
-                                              )
-                                            }
-                                          }
-                                        })
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass:
-                                          "w-full md:w-1/2 px-3 mb-6 bg-gray-100 rounded-lg pt-2 p-3 m-1"
-                                      },
-                                      [
-                                        _c(
-                                          "label",
+                                            "block uppercase tracking-wide text-gray-500 text-xs font-bold mb-2 "
+                                        },
+                                        [_vm._v("Full name")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("input", {
+                                        directives: [
                                           {
-                                            staticClass:
-                                              "block uppercase tracking-wide text-gray-500 text-xs font-bold mb-2"
-                                          },
-                                          [_vm._v("Phone")]
-                                        ),
-                                        _vm._v(" "),
-                                        _c("input", {
-                                          directives: [
-                                            {
-                                              name: "model",
-                                              rawName: "v-model",
-                                              value: _vm.form.phone,
-                                              expression: "form.phone"
-                                            }
-                                          ],
-                                          staticClass:
-                                            "appearance-none block w-full bg-white text-gray-500 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500",
-                                          attrs: {
-                                            type: "text",
-                                            required: "",
-                                            name: "phone"
-                                          },
-                                          domProps: { value: _vm.form.phone },
-                                          on: {
-                                            input: function($event) {
-                                              if ($event.target.composing) {
-                                                return
-                                              }
-                                              _vm.$set(
-                                                _vm.form,
-                                                "phone",
-                                                $event.target.value
-                                              )
-                                            }
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.form.name,
+                                            expression: "form.name"
                                           }
-                                        })
-                                      ]
-                                    )
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass:
-                                      "flex items-center justify-between mt-4"
-                                  },
-                                  [
-                                    _c(
-                                      "div",
-                                      {
+                                        ],
                                         staticClass:
-                                          "w-full md:w-1/2 px-3 mb-6 bg-gray-100 rounded-lg pt-2 p-3 m-1"
-                                      },
-                                      [
-                                        _c(
-                                          "label",
+                                          " appearance-none block w-full bg-white text-gray-500 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500",
+                                        attrs: { type: "text", name: "name" },
+                                        domProps: { value: _vm.form.name },
+                                        on: {
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.$set(
+                                              _vm.form,
+                                              "name",
+                                              $event.target.value
+                                            )
+                                          }
+                                        }
+                                      }),
+                                      _vm._v(" "),
+                                      _c("jet-input-error", {
+                                        staticClass: "mt-2",
+                                        attrs: { message: _vm.errors.name }
+                                      })
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "w-full md:w-1/2 px-3 mb-6 hover:bg-blue-200 bg-gray-100 rounded-lg pt-2 p-3 m-1"
+                                    },
+                                    [
+                                      _c(
+                                        "label",
+                                        {
+                                          staticClass:
+                                            "block uppercase tracking-wide text-gray-500 text-xs font-bold mb-2"
+                                        },
+                                        [_vm._v("Phone")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("input", {
+                                        directives: [
                                           {
-                                            staticClass:
-                                              "block uppercase tracking-wide text-gray-500 text-xs font-bold mb-2"
-                                          },
-                                          [_vm._v("Email")]
-                                        ),
-                                        _vm._v(" "),
-                                        _c("input", {
-                                          directives: [
-                                            {
-                                              name: "model",
-                                              rawName: "v-model",
-                                              value: _vm.form.email,
-                                              expression: "form.email"
-                                            }
-                                          ],
-                                          staticClass:
-                                            "appearance-none block w-full bg-white text-gray-500 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500",
-                                          attrs: {
-                                            type: "text",
-                                            required: "",
-                                            name: "email"
-                                          },
-                                          domProps: { value: _vm.form.email },
-                                          on: {
-                                            input: function($event) {
-                                              if ($event.target.composing) {
-                                                return
-                                              }
-                                              _vm.$set(
-                                                _vm.form,
-                                                "email",
-                                                $event.target.value
-                                              )
-                                            }
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.form.phone,
+                                            expression: "form.phone"
                                           }
-                                        })
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      {
+                                        ],
                                         staticClass:
-                                          "w-full md:w-1/2 px-3 mb-6 bg-gray-100 rounded-lg pt-2 p-3 m-1"
-                                      },
-                                      [
-                                        _c(
-                                          "label",
+                                          "appearance-none block w-full bg-white text-gray-500 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500",
+                                        attrs: { type: "text", name: "phone" },
+                                        domProps: { value: _vm.form.phone },
+                                        on: {
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.$set(
+                                              _vm.form,
+                                              "phone",
+                                              $event.target.value
+                                            )
+                                          }
+                                        }
+                                      }),
+                                      _vm._v(" "),
+                                      _c("jet-input-error", {
+                                        staticClass: "mt-2",
+                                        attrs: { message: _vm.errors.phone }
+                                      })
+                                    ],
+                                    1
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "flex items-center justify-between mt-4"
+                                },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "w-full md:w-1/2 px-3 mb-6 hover:bg-blue-200 bg-gray-100 rounded-lg pt-2 p-3 m-1"
+                                    },
+                                    [
+                                      _c(
+                                        "label",
+                                        {
+                                          staticClass:
+                                            "block uppercase tracking-wide text-gray-500 text-xs font-bold mb-2"
+                                        },
+                                        [_vm._v("Email")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("input", {
+                                        directives: [
                                           {
-                                            staticClass:
-                                              "block uppercase tracking-wide text-gray-500 text-xs font-bold mb-2"
-                                          },
-                                          [_vm._v("Password")]
-                                        ),
-                                        _vm._v(" "),
-                                        _c("input", {
-                                          directives: [
-                                            {
-                                              name: "model",
-                                              rawName: "v-model",
-                                              value: _vm.form.password,
-                                              expression: "form.password"
-                                            }
-                                          ],
-                                          staticClass:
-                                            "appearance-none block w-full bg-white text-gray-500 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500",
-                                          attrs: {
-                                            type: "text",
-                                            required: "",
-                                            name: "password"
-                                          },
-                                          domProps: {
-                                            value: _vm.form.password
-                                          },
-                                          on: {
-                                            input: function($event) {
-                                              if ($event.target.composing) {
-                                                return
-                                              }
-                                              _vm.$set(
-                                                _vm.form,
-                                                "password",
-                                                $event.target.value
-                                              )
-                                            }
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.form.email,
+                                            expression: "form.email"
                                           }
-                                        })
-                                      ]
-                                    )
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  { staticClass: "flex justify-end pt-8" },
-                                  [
-                                    _c(
-                                      "button",
-                                      {
+                                        ],
                                         staticClass:
-                                          "appearance-none bg-gray-200 hover:bg-green-400 hover:text-white text-gray-500 px-2 py-1 shadow-sm rounded-md mr-3",
-                                        attrs: { type: "submit" }
-                                      },
-                                      [_vm._v("save changes")]
-                                    )
-                                  ]
-                                )
-                              ]
-                            )
+                                          "appearance-none block w-full bg-white text-gray-500 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500",
+                                        attrs: { type: "text", name: "email" },
+                                        domProps: { value: _vm.form.email },
+                                        on: {
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.$set(
+                                              _vm.form,
+                                              "email",
+                                              $event.target.value
+                                            )
+                                          }
+                                        }
+                                      }),
+                                      _vm._v(" "),
+                                      _c("jet-input-error", {
+                                        staticClass: "mt-2",
+                                        attrs: { message: _vm.errors.email }
+                                      })
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "w-full md:w-1/2 px-3 mb-6 hover:bg-blue-200 bg-gray-100 rounded-lg pt-2 p-3 m-1"
+                                    },
+                                    [
+                                      _c(
+                                        "label",
+                                        {
+                                          staticClass:
+                                            "block uppercase tracking-wide text-gray-500 text-xs font-bold mb-2"
+                                        },
+                                        [_vm._v("Password")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.form.password,
+                                            expression: "form.password"
+                                          }
+                                        ],
+                                        staticClass:
+                                          "appearance-none block w-full bg-white text-gray-500 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500",
+                                        attrs: {
+                                          type: "text",
+                                          name: "password"
+                                        },
+                                        domProps: { value: _vm.form.password },
+                                        on: {
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.$set(
+                                              _vm.form,
+                                              "password",
+                                              $event.target.value
+                                            )
+                                          }
+                                        }
+                                      }),
+                                      _vm._v(" "),
+                                      _c("jet-input-error", {
+                                        staticClass: "mt-2",
+                                        attrs: { message: _vm.errors.password }
+                                      })
+                                    ],
+                                    1
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "flex justify-end pt-8" },
+                                [
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass:
+                                        "appearance-none bg-blue-200 hover:bg-green-400 hover:text-white text-gray-700 p-2 pl-3 pr-3 shadow-sm rounded-md mr-3",
+                                      attrs: { type: "submit" }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                                    Submit\n                                  "
+                                      )
+                                    ]
+                                  )
+                                ]
+                              )
+                            ])
                           ])
                         ]
                       )
