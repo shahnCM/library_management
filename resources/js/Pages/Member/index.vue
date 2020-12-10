@@ -12,19 +12,17 @@
 
                   <!-- component -->
                   <div class="bg-white pb-4 px-4 rounded-md w-full">
-                    <div class="flex justify-between w-full pt-6 ">
-                      <p class="ml-3"> Members Table</p>
-                      <svg width="14" height="4" viewBox="0 0 14 4" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <g opacity="0.4">
-                      <circle cx="2.19796" cy="1.80139" r="1.38611" fill="#222222"/>
-                      <circle cx="11.9013" cy="1.80115" r="1.38611" fill="#222222"/>
-                      <circle cx="7.04991" cy="1.80115" r="1.38611" fill="#222222"/>
-                      </g>
-                      </svg>
-
-                    </div>
-                    <div class="w-full flex justify-end px-2 mt-2">
-                      <div class="w-full sm:w-64 inline-block relative ">
+                    <div class="w-full flex justify-between px-2 mt-2 pt-6">
+                      <div class="pr-5">
+                        
+                        <inertia-link :href="$route('member.create')">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500 hover:text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+                          </svg>
+                        </inertia-link>
+                                                 
+                      </div>
+                      <div class="w-full sm:w-64 inline-block relative">
                         <input type="" name="" class="leading-snug border border-gray-300 block w-full appearance-none bg-gray-100 text-sm text-gray-600 py-1 px-4 pl-8 rounded-lg" placeholder="Search" />
 
                         <div class="pointer-events-none absolute pl-3 inset-y-0 left-0 flex items-center px-2 text-gray-300">
@@ -40,12 +38,13 @@
                       <table class="table-auto border-collapse w-full">
                         <thead>
                           <tr class="rounded-lg text-sm font-medium text-gray-700 text-left" style="font-size: 0.9674rem">
-                            <th class="px-4 py-2 bg-gray-200 " style="background-color:#f8f8f8">ID</th>
-                            <th class="px-4 py-2 " style="background-color:#f8f8f8">Name</th>
-                            <th class="px-4 py-2 " style="background-color:#f8f8f8">Email</th>
-                            <th class="px-4 py-2 " style="background-color:#f8f8f8">Phone</th>
-                            <th class="px-4 py-2 " style="background-color:#f8f8f8">Status</th>
-                            <th class="px-4 py-2 " style="background-color:#f8f8f8">Action</th>
+                            <th class=" px-4 py-2 bg-gray-200 " style="background-color:#f8f8f8">#ID</th>
+                            <th class=" px-4 py-2 " style="background-color:#f8f8f8">Name</th>
+                            <th class=" px-4 py-2 " style="background-color:#f8f8f8">Phone</th>
+                            <th class=" px-4 py-2 " style="background-color:#f8f8f8">E-mail</th>
+                            <th class=" px-4 py-2 " style="background-color:#f8f8f8">Status</th>
+                            <th class=" px-4 py-2 " style="background-color:#f8f8f8">Joined@</th>
+                            <th class=" px-4 py-2 text-center" style="background-color:#f8f8f8">Action</th>
                           </tr>
                         </thead>
                         <tbody class="text-sm font-normal text-gray-700">
@@ -59,15 +58,46 @@
                               <span v-if="member.is_banned">Banned</span>
                               <span v-else>Not Banned</span>
                             </td>
-                            <td class="px-4 py-4">Edit Delete</td>
+                            <td class="px-4 py-4">{{moment(member.created_at).format('DD-MM-YYYY')}}</td>
+                            <td class="px-4 py-4">
+                              <div class="grid lg:grid-cols-4 md:grid-cols-2" >
+
+                                <svg v-if="member.is_banned" class="h-6 w-6 text-gray-500 hover:text-green-600" width="15" height="15" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                  <path fill-rule="evenodd" d="M4.293 15.707a1 1 0 010-1.414l5-5a1 1 0 011.414 0l5 5a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414 0zm0-6a1 1 0 010-1.414l5-5a1 1 0 011.414 0l5 5a1 1 0 01-1.414 1.414L10 5.414 5.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                                </svg>
+                                                              
+                                <svg v-else class="h-6 w-6 text-gray-500 hover:text-red-800" width="15" height="15" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                  <path fill-rule="evenodd" d="M15.707 4.293a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-5-5a1 1 0 011.414-1.414L10 8.586l4.293-4.293a1 1 0 011.414 0zm0 6a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-5-5a1 1 0 111.414-1.414L10 14.586l4.293-4.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                </svg>
+                              
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500 hover:text-red-500" width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                                  <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
+                                </svg> 
+                                                              
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500 hover:text-yellow-300" width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                                  <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
+                                  <path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd" />
+                                </svg>                             
+                              
+                                <inertia-link :href="$route('member.show', {member: member.id})">
+                                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600 hover:text-blue-600" width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10.293 15.707a1 1 0 010-1.414L14.586 10l-4.293-4.293a1 1 0 111.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                                    <path fill-rule="evenodd" d="M4.293 15.707a1 1 0 010-1.414L8.586 10 4.293 5.707a1 1 0 011.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                                  </svg>
+                                </inertia-link>
+
+                              </div>                              
+                            </td>
                           </tr>
                         </tbody>
                       </table>
                     </div>
 
+                    <SimplePagination :data="members"/>
+                  
                   </div>
 
-                  <SimplePagination :data="members"/>
+                  
 
                 </div>
             </div>
@@ -102,5 +132,13 @@
     }
 </script>
 
+<style scoped>
+  
+thead tr th:first-child { border-top-left-radius: 10px; border-bottom-left-radius: 10px;}
+thead tr th:last-child { border-top-right-radius: 10px; border-bottom-right-radius: 10px;}
+
+tbody tr td:first-child { border-top-left-radius: 5px; border-bottom-left-radius: 0px;}
+tbody tr td:last-child { border-top-right-radius: 5px; border-bottom-right-radius: 0px;}
 
 
+</style>

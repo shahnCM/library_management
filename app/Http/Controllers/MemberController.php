@@ -16,7 +16,7 @@ class MemberController extends Controller
      */
     public function index()
     {
-        $users = User::paginate(5);
+        $users = User::paginate(10);
         
         return Inertia::render('Member/index', [
             'members' => $users,
@@ -30,7 +30,7 @@ class MemberController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Member/create');
     }
 
     /**
@@ -41,7 +41,7 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->input());
     }
 
     /**
@@ -52,7 +52,11 @@ class MemberController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::findOrFail($id);
+        
+        return Inertia::render('Member/show', [
+            'member' => $user,
+        ]);
     }
 
     /**
