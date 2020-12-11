@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Session;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 
@@ -40,17 +41,17 @@ class MemberController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        sleep(5);
-        
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'phone' => 'required',
-            'password' => 'required|min:8',
-        ]);
+    {        
+        // $request->validate([
+        //     'name' => 'required',
+        //     'email' => 'required|email',
+        //     'phone' => 'required',
+        //     'password' => 'required|min:8',
+        // ]);
 
-        // dd($request->input());
+
+
+        return redirect()->route('member.create')->with(['toastSuccess' => ['message' => 'Member Registration Successful']]);
     }
 
     /**

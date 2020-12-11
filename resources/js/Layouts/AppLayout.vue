@@ -196,6 +196,11 @@
             </div>
         </nav>
 
+        <!-- Toast Notification -->
+        
+        <toast-fail :toastFail="$page.toastFail"/> 
+        <toast-success :toastSuccess="$page.toastSuccess"/> 
+
         <!-- Page Heading -->
         <header class="bg-white shadow">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
@@ -220,6 +225,8 @@
     import JetDropdownLink from '@/Jetstream/DropdownLink'
     import JetNavLink from '@/Jetstream/NavLink'
     import JetResponsiveNavLink from '@/Jetstream/ResponsiveNavLink'
+    import ToastSuccess from '../Components/Common/ToastSuccess.vue'
+    import ToastFail from '../Components/Common/ToastFail.vue'
 
     export default {
         components: {
@@ -228,6 +235,8 @@
             JetDropdownLink,
             JetNavLink,
             JetResponsiveNavLink,
+            ToastSuccess,
+            ToastFail,
         },
 
         data() {
