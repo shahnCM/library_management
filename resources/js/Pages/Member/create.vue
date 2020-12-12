@@ -13,7 +13,7 @@
             <!-- component -->
             <div class="bg-white">
               <div class="header bg-blue-200 p-5 grid justify-items-stretch">
-                <h3 class="text-gray-500 text-xl mx-auto justify-self-center">Enter all the information below {{$page}}</h3>
+                <h3 class="text-gray-500 text-xl mx-auto justify-self-center">Enter all the information below</h3>
               </div>
               <div class="container mx-auto">
                   <div class="inputs w-full max-w-5xl p-4 mx-auto">

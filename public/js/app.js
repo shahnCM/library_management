@@ -49157,11 +49157,7 @@ var render = function() {
                         staticClass:
                           "text-gray-500 text-xl mx-auto justify-self-center"
                       },
-                      [
-                        _vm._v(
-                          "Enter all the information below " + _vm._s(_vm.$page)
-                        )
-                      ]
+                      [_vm._v("Enter all the information below")]
                     )
                   ]
                 ),
